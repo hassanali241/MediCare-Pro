@@ -157,29 +157,54 @@ Navigate to the server directory, install dependencies, and setup your environme
 cd server
 npm install
 ```
-Ensure your `server/config/.env` file contains:
+Copy the example environment file and update it with your credentials:
+```bash
+cp config/.env.example config/.env
+```
+Your `server/config/.env` file should contain:
 ```env
+# Database
+MONGO_URI=mongodb://localhost:27017/medicare_pro
+
+# Session / JWT
+SESSION_SECRET=medicare-pro-super-secret-key-2025
+SESSION_LIFETIME=7d
+COOKIE_DAYS=7
+
+# Server
 PORT=4000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_super_secret_key
-JWT_EXPIRES=7d
-COOKIE_EXPIRES=7
+
+# Client URLs
+CLIENT_URL=http://localhost:5173
+ADMIN_URL=http://localhost:5174
+
+# Cloudinary (for doctor profile images — optional)
+CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
+CLOUDINARY_API_KEY=your-cloudinary-api-key
+CLOUDINARY_API_SECRET=your-cloudinary-api-secret
 ```
 
-### 2. Seed the Default Admin
+### 2. Verify Environment Variables
+Run the following command to confirm the system can access all environment variables:
+```bash
+node check-env.js
+```
+You should see all variables printed to the console.
+
+### 3. Seed the Default Admin
 To access the Admin Dashboard initially, run the seed script to create the master admin.
 ```bash
 npm run seed
 ```
 *(Default Admin: `admin@medicare.com` / `admin1234`)*
 
-### 3. Start the Backend Server
+### 4. Start the Backend Server
 ```bash
 npm run dev
 ```
 *(Server runs on http://localhost:4000)*
 
-### 4. Start the Patient Portal
+### 5. Start the Patient Portal
 Open a new terminal.
 ```bash
 cd client
@@ -188,7 +213,7 @@ npm run dev
 ```
 *(Client runs on http://localhost:5173)*
 
-### 5. Start the Admin Dashboard
+### 6. Start the Admin Dashboard
 Open another new terminal.
 ```bash
 cd admin
