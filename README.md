@@ -165,44 +165,16 @@ cd server
 npm install
 ```
 
-### Step 3: Configure Environment Variables
-Copy the example environment file to create your own `.env` file:
-```bash
-cp config/.env.example config/.env
-```
-> **Note:** The default values in `.env.example` are pre-configured for local development. If you are using MongoDB locally on the default port, no changes are needed. If you are using MongoDB Atlas or a remote database, update the `MONGO_URI` value in `config/.env` with your connection string.
-
-Your `server/config/.env` file should look like this:
-```env
-# Database
-MONGO_URI=mongodb://localhost:27017/medicare_pro
-
-# Session / JWT
-SESSION_SECRET=medicare-pro-super-secret-key-2025
-SESSION_LIFETIME=7d
-COOKIE_DAYS=7
-
-# Server
-PORT=4000
-
-# Client URLs
-CLIENT_URL=http://localhost:5173
-ADMIN_URL=http://localhost:5174
-
-# Cloudinary (for doctor profile images — optional)
-CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
-CLOUDINARY_API_KEY=your-cloudinary-api-key
-CLOUDINARY_API_SECRET=your-cloudinary-api-secret
-```
-
-### Step 4: Verify Environment Variables
-Run the following command to confirm the system can access all environment variables:
+### Step 3: Verify Environment Variables
+The `.env` file is already included in the repository at `server/config/.env` with all the required credentials pre-configured for local development. Run the following command to confirm the system can access them:
 ```bash
 node check-env.js
 ```
 You should see all the environment variables printed to the console with their values.
 
-### Step 5: Seed the Default Admin Account
+> **Note:** If you are using MongoDB Atlas or a remote database, update the `MONGO_URI` value in `server/config/.env` with your connection string.
+
+### Step 4: Seed the Default Admin Account
 Run the seed script to create the initial admin account in the database:
 ```bash
 npm run seed
@@ -211,13 +183,13 @@ This will create the default admin with the following credentials:
 - **Email:** `admin@medicare.com`
 - **Password:** `admin1234`
 
-### Step 6: Start the Backend Server
+### Step 5: Start the Backend Server
 ```bash
 npm run dev
 ```
 The server will start on **http://localhost:4000**
 
-### Step 7: Install & Start the Patient Portal
+### Step 6: Install & Start the Patient Portal
 Open a **new terminal** window, navigate to the project root, and run:
 ```bash
 cd client
@@ -226,7 +198,7 @@ npm run dev
 ```
 The Patient Portal will start on **http://localhost:5173**
 
-### Step 8: Install & Start the Admin Dashboard
+### Step 7: Install & Start the Admin Dashboard
 Open **another terminal** window, navigate to the project root, and run:
 ```bash
 cd admin
