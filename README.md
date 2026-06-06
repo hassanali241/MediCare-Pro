@@ -148,20 +148,31 @@ The database utilizes Mongoose schemas to ensure data integrity:
 ## 🚀 Installation & Setup
 
 ### Prerequisites
-- Node.js (v16.0.0 or higher)
-- MongoDB (Local installation or MongoDB Atlas cluster)
+Make sure the following are installed on your machine before proceeding:
+- **Node.js** (v16.0.0 or higher) — [Download here](https://nodejs.org/)
+- **MongoDB** (Local installation or MongoDB Atlas cluster) — [Download here](https://www.mongodb.com/try/download/community)
+- **Git** — [Download here](https://git-scm.com/downloads)
 
-### 1. Database & Environment Setup
-Navigate to the server directory, install dependencies, and setup your environment variables.
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com/hassanali241/MediCare-Pro.git
+cd MediCare-Pro
+```
+
+### Step 2: Install Server Dependencies
 ```bash
 cd server
 npm install
 ```
-Copy the example environment file and update it with your credentials:
+
+### Step 3: Configure Environment Variables
+Copy the example environment file to create your own `.env` file:
 ```bash
 cp config/.env.example config/.env
 ```
-Your `server/config/.env` file should contain:
+> **Note:** The default values in `.env.example` are pre-configured for local development. If you are using MongoDB locally on the default port, no changes are needed. If you are using MongoDB Atlas or a remote database, update the `MONGO_URI` value in `config/.env` with your connection string.
+
+Your `server/config/.env` file should look like this:
 ```env
 # Database
 MONGO_URI=mongodb://localhost:27017/medicare_pro
@@ -184,43 +195,45 @@ CLOUDINARY_API_KEY=your-cloudinary-api-key
 CLOUDINARY_API_SECRET=your-cloudinary-api-secret
 ```
 
-### 2. Verify Environment Variables
+### Step 4: Verify Environment Variables
 Run the following command to confirm the system can access all environment variables:
 ```bash
 node check-env.js
 ```
-You should see all variables printed to the console.
+You should see all the environment variables printed to the console with their values.
 
-### 3. Seed the Default Admin
-To access the Admin Dashboard initially, run the seed script to create the master admin.
+### Step 5: Seed the Default Admin Account
+Run the seed script to create the initial admin account in the database:
 ```bash
 npm run seed
 ```
-*(Default Admin: `admin@medicare.com` / `admin1234`)*
+This will create the default admin with the following credentials:
+- **Email:** `admin@medicare.com`
+- **Password:** `admin1234`
 
-### 4. Start the Backend Server
+### Step 6: Start the Backend Server
 ```bash
 npm run dev
 ```
-*(Server runs on http://localhost:4000)*
+The server will start on **http://localhost:4000**
 
-### 5. Start the Patient Portal
-Open a new terminal.
+### Step 7: Install & Start the Patient Portal
+Open a **new terminal** window, navigate to the project root, and run:
 ```bash
 cd client
 npm install
 npm run dev
 ```
-*(Client runs on http://localhost:5173)*
+The Patient Portal will start on **http://localhost:5173**
 
-### 6. Start the Admin Dashboard
-Open another new terminal.
+### Step 8: Install & Start the Admin Dashboard
+Open **another terminal** window, navigate to the project root, and run:
 ```bash
 cd admin
 npm install
 npm run dev
 ```
-*(Admin runs on http://localhost:5174)*
+The Admin Dashboard will start on **http://localhost:5174**
 
 ---
 
